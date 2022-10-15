@@ -30,7 +30,7 @@ public class ReporteListaTServicioxAlertaServiceImpl implements IReporteListaTSe
 	public ReporteListaTServicioxAlerta obtenerReporteListaTServicioxAlerta(Map<String, Object> params)
 			throws JRException, IOException, SQLException {
 		// TODO Auto-generated method stub
-		String fileName = "ReportePDF";
+		String fileName = "TipoServicioxFrecuenciaAlertas";
 		ReporteListaTServicioxAlerta dto = new ReporteListaTServicioxAlerta();
 		String extension = params.get("tipo").toString().equalsIgnoreCase(TipoReporteEnum.EXCEL.name()) ? ".xlsx"
 				: ".pdf";
