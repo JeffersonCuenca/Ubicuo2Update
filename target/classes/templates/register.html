@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+<meta charset="UTF-8">
+<title>ubicuo-register</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
+<link rel="stylesheet" th:href="@{/css/style_register.css}" />
+<script src="/js/filtros.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="title">Registrate</div>
+		<form th:action="@{/register/save}" method="post"
+			th:object="${usuario}" enctype="multipart/form-data">
+			<div class="user-detail">
+
+				<div class="input-box">
+					<label class="details" for="nombres_completos">Nombres</label> <input
+						type="text" onkeypress="return SoloLetras(event);"
+						placeholder="Ingresa tus nombres" required
+						th:field="*{fistnameUsuario}" id="nombres_completos">
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('fistnameUsuario')}"
+						th:errors="*{fistnameUsuario}"></div>
+				</div>
+
+				<div class="input-box">
+					<label class="details" for="apellidos_completos">Apellidos</label>
+					<input type="text" onkeypress="return SoloLetras(event);"
+						placeholder="Ingresa tus apellidos" required
+						th:field="*{lastnameUsuario}" id="apellidos_completos">
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('lastnameUsuario')}"
+						th:errors="*{lastnameUsuario}"></div>
+				</div>
+
+				<div class="input-box">
+					<label class="details" for="documento_identidad">DNI</label> <input
+						type="text" onkeypress="return SoloNumeros(event);" maxlength="8"
+						placeholder="Ingresa tu dni" required th:field="*{dni}"
+						id="documento_identidad">
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('*{dni}')}" th:errors="*{dni}"></div>
+				</div>
+
+				<div class="input-box">
+					<label class="details" for="correo_electronico">Correo</label> <input
+						type="email" placeholder="Ingresa tu correo" required
+						th:field="*{correo}" id="correo_electronico">
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('*{correo}')}" th:errors="*{correo}"></div>
+				</div>
+
+				<div class="input-box">
+					<label class="details" for="contraseña_primaria">Contraseña</label>
+					<input type="password" placeholder="Ingresa tu contraseña" required
+						th:field="*{password}" id="contraseña_primaria">
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('*{password}')}"
+						th:errors="*{password}"></div>
+				</div>
+				<!-- 
+                <div class="input-box">
+                    <label class="details" for="contraseña_secundaria">Confirmar contraseña</label>
+                    <input type="password" placeholder="Confirma tu contraseña" id="contraseña_secundaria">
+                </div>
+                   -->
+			</div>
+			<!--  
+            <div class="container-nota">
+                <div class="texto"> Estos campos de información deben ser completados obligatoriamente*</div>
+            </div>
+            -->
+			<div class="user-detail">
+
+				<div class="input-box">
+					<label class="details">Servicio</label> <select name="slct1"
+						id="slct1" th:field="*{servicio}">
+						<option th:value="${null}" selected>--Seleccione--</option>
+						<option id="opcion_uno" th:each="t: ${listaservicio}"
+							th:value="${t.idServicio}" th:text="${t.nameServicio}"></option>
+					</select>
+				</div>
+
+				<div class="input-box">
+					<label class="details">Cargo</label> <select name="slct2"
+						id="slct2" th:field="*{cargo}">
+						<option th:value="${null}" selected>--Seleccione--</option>
+						<option id="opcion_dos" th:each="t: ${listacargo}"
+							th:value="${t.idCargo}" th:text="${t.nameCargo}"></option>
+					</select>
+				</div>
+
+				<div class="input-box">
+					<label class="details">Ubicacion</label> <select name="slct3"
+						id="slct3" th:field="*{ubicacion}">
+						<option th:value="${null}" selected>--Seleccione--</option>
+						<option id="opcion_tres" th:each="t: ${listaubicacion}"
+							th:value="${t.idUbicacion}" th:text="${t.nlongitud}"></option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="file" class="">FOTO</label>
+					<div class="col-sm-6">
+						<input type="file" name="file" class="form-control" required
+							th:text="${usuario.photoUsuario}" />
+					</div>
+
+				</div>
+
+
+			</div>
+
+			<div class="container-nota">
+				<div class="texto">Aquellos usuarios que, al momento de
+					registrarse, no pongan la opción SIN CARGO o SIN SERVICIO estarán
+					sujetos a investigación por lo que puede que no tengan una cuenta
+					instantaneamente*</div>
+			</div>
+
+			<div class="wrap">
+				<div class="item">
+					<button class="btn">REGISTRATE</button>
+				</div>
+			</div>
+			<a th:href="@{/login}">Ya tienes una cuenta?</a>
+		</form>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="icon"
+	href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKoAAACqCAMAAAAKqCSwAAAAb1BMVEUAAAD////8/PxdXV0WFhbf39+Dg4MEBATr6+uxsbEtLS1cXFz29vYRERE4ODimpqZFRUXHx8fNzc3Y2NiLi4shISHo6OhAQEDT09O5ublVVVWTk5MbGxujo6Nvb28SEhI0NDQmJiZra2uYmJh+fn794qvdAAADhElEQVR4nO2bXXOqMBCGSRTBGhUQED+r1v//G09ATy/ObHAk7+bgzD4XnU6r6eOSJptNEkWCIAiCIAiCIAiCIAiCIAiCIAiCMIwk+Q9/c/om38tfzaC6SbSv4/fYNPluXZ73X8uQoq3qRGk1iLRZn1cBdZNo8b6qbum+M0W5CtULPKKqHr5mNwkTWh/Vh6790txCyPqqPm2LBX83AKh2snr+9RGqnWx6Zg4sSFW1jcyPrHMCTLWVbVaMpkhV206dfYiqbSjdf4iqxfC5glVtXNn6ADqqWsVcAyxa1TaWM82ycFXb2uFTVK0sz78Wg6pWm+OHqHJ1gUGqf9cATgzHDOtQNakbo5+x6wnrPJSqVj/Vl5NVtrivG9MvyzAROFTvr9K5aVZu3LJarYOpzvpUk0fJ4nhrlLPTMvTWIarPN1rZ0jjDWo5H9WGbxXQnsGPrdEyq7buvhavDLtCrFz9V+6qqIV21OmFFvVXtyy415WqTQXQP8FXtGqBBD63eqpY5HdbZCFW31JCl1W6EqmRY8Z0VoNqWaCnQExYkqkd6IgCPrBDVaE32gDtSFKOaRGdS9Wd8qnYMIEcr8BCAUa1iSjXHJgEY1SWRtGjVfI9QNdpRjcTYNTZIlRoCVD1K1ROpWokqQwcYpSqZB47y3yrJqUbAK0GM6nFDNVJga8IY1QuRXNuJdXyzFb28gheDMFE9kJkVuMACUaVSAPuT2whTayoHxBcuIarU84fPABDVilpawdNViGpJlyzQexeAQtAqpXoqvhToH9UlMal2XfUKFUVE9cdRtETXgbxLwcmBfvpanUdWCv4+0aZKpejn76HavmCbO0Q5doMGqna/vR5cGywsu9eDo7rcHmLnHhvL+QW3qptltVoc8v6dyxvc1LUdvJk72eVFbB4fyPn0VYEtrPSpvuLVNvsEb+pU1T28/BzopUq/qhdmy2DKc3YFvQ3EpWofP89BK4YjYfWFxZQhqmwHGPGqZyZT/ElL/OkKHlW7oOI7bY09wKxKxnPh0GPhhvW8PU5Vq5jxoDVQ1baxY75vgVG1KUzNfdkComrfb07sV1j8Vduc0MyzAPfD/FS73DVdhxD1UH2m2LqYXQLduOvuBr7Jr22dz7Jw9xiHHWA26SY/3ffXwNduq8mbLPbZ6jr9D5eDPQhv21OccBBcURAEQRAEQRAEQRAEQRAEQRAEQfiHP/sXNtQqYCthAAAAAElFTkSuQmCC">
+<title>Web</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/dive.css">
+</head>
+
+<body>
+
+	<div th:replace="fragments/sidebar :: sidebar" id="panel"
+		class="activepanel"></div>
+
+	<div class="bg row">
+		<div th:replace="fragments/nav :: nav" class="row topbar col-lg-12"></div>
+
+		<div class="content container row col-12">
+			<div class="col-1">
+				<h3></h3>
+			</div>
+			<div class="col-3">
+				<h3>Registrar Alerta</h3>
+			</div>
+			<div class="col-8 frm-registro">
+				<form th:action="@{/alertas/saveUpdate}" method="post"
+					th:object="${alerta}">
+					<div class="form-group">
+
+						<label>ID:</label> <input type="text" class="form-control"
+							readonly th:field="*{idAlerta}"></input> <br />
+
+						<div class="form-group">
+							<label for="estado">Estado:</label> <select class="form-control"
+								name="state" th:field="*{cEstados}">
+								<option th:value="${null}" selected>--Seleccione--</option>
+								<option th:each="t: ${listaEstados}" th:value="${t.cEstados}"
+									th:text="${t.nameEstados}"></option>
+							</select> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('cEstados')}" th:errors="*{cEstados}"></small>
+						</div>
+
+						<br />
+
+						<div class="form-group">
+							<label for="UsuarioAux">Usuario Auxiliado:</label> <select
+								class="form-control" name="state" th:field="*{idUsuarioAux}">
+								<option th:value="${null}" selected>--Seleccione--</option>
+								<option th:each="u: ${listaUsuariosAux.?[cargo == null]}"
+									th:value="${u.idUsuario}" th:text="${u.fistnameUsuario + ' ' + u.lastnameUsuario}"></option>
+							</select> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('idUsuarioAux')}"
+								th:errors="*{idUsuarioAux}"></small>
+						</div>
+
+						<br />
+
+						<div class="form-group">
+							<label for="UsuarioRes">Usuario Rescatista:</label> <select
+								class="form-control" name="state" th:field="*{idUsuarioRes}">
+								<option th:value="${null}" selected>--Seleccione--</option>
+								<option th:each="u: ${listaUsuariosRes.?[cargo != null]}"
+									th:value="${u.idUsuario}" th:text="${u.fistnameUsuario + ' ' + u.lastnameUsuario + ' - ' + u?.cargo?.nameCargo}"></option>
+							</select> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('idUsuarioRes')}"
+								th:errors="*{idUsuarioRes}"></small>
+						</div>
+
+						<br />
+
+						<div class="form-group row">
+							<label for="fecha" class="col-sm-2 col-form-label">Fecha:</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{fecha}" class="form-control"
+									th:errorclass="'form-control alert-danger'" readonly /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></small>
+							</div>
+						</div>
+
+					</div>
+					<button type="submit" class="btn btn-warning">Aceptar</button>
+					<a href="/alertas/list" class="btn btn-light">Cancelar</a>
+
+				</form>
+				<div th:if="${mensaje}" class="alert alert-danger">
+					<p th:text="${mensaje}"></p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/jquery-3.3.1.slim.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/dive.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+body{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: url(../images/fondo_login.jpg) no-repeat center top;
+    background-size: cover;
+    padding: 10px;
+}
+
+.container{
+    max-width: 500px;
+    width: 100%;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+
+.container .title{
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+
+.container .title::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background: linear-gradient(135deg, #b00024, #fff);
+}
+
+.container form .user-detail{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+form .user-detail .input-box{
+    margin: 20px 0 12px 0;
+    width: calc(100% / 2 - 20px);
+}
+
+.user-detail .input-box .details{
+    margin: 0;
+	padding: 0;
+	font-weight: bold;
+	display: block;
+}
+
+.user-detail .input-box input{
+    border: none;
+	border-bottom: 1px solid #000;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: #000;
+	font-size: 14px;
+}
+
+form .container-nota{
+    margin-top: 10px;
+    max-width: 410px;
+    width: 100%;
+    background: rgb(216, 216, 216);
+    padding: 10px 20px;
+    border-radius: 5px;
+    
+}
+
+form .container-nota .texto{
+    font-size: 10px;
+    font-weight: 500;
+    position: relative;
+    font-style: italic;
+    text-align: center;
+}
+
+
+form .user-detail .input-box select{
+    border: none;
+	border-bottom: 1px solid #000;
+	background: transparent;
+	outline: none;
+	height: 30px;
+    width: 170px;
+	color: rgb(124, 124, 124);
+	font-size: 14px;
+}
+
+.wrap{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.item{
+	padding: 10px;
+}
+
+.btn{
+    margin-top: 10px;
+	outline: none;
+	display: block;
+	border: none;
+	font-size: 14px;
+	line-height: 1;
+	padding: 10px 25px;
+	border-radius: 5px;
+	background: #b00024;
+	color: #fff;
+	cursor: pointer;
+}
+
+.btn:hover,.btn:focus{
+	background: #fff;
+	color: #b00024;
+	border: solid 1px #b00024;
+}
+
+.btn:active{
+	background: #b00024;
+	color: #fff;
+}
+
+form a{
+    text-decoration: none;
+	font-size: 12px;
+	line-height: 20px;
+	color: #423F3E;
+}
+
+form a:hover{
+	color: #b00024;
+}
+
+form .checkbox input[type="checkbox"]{
+    display: none;
+}
+
+form .checkbox label{
+    margin-top: 15px;
+    color: #000;
+    padding: 5px 15px 5px 35px;
+    display: inline-block;
+    position: relative;
+    font-size: 13px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+form .checkbox label:before{
+    content: "";
+    width: 17px;
+    height: 17px;
+    display: inline-block;
+    background: none;
+    border: 3px solid #000;
+    border-radius: 50%;
+    position: absolute;
+    left: 10px;
+    top: 4px;
+}
+
+form .checkbox label:before{
+    border-radius: 3px;
+}
+
+form .checkbox input[type="checkbox"]:checked + label{
+    padding: 5px 10px;
+    background: #000;
+    border-radius: 2px;
+    color: #fff;
+}
+
+form .checkbox input[type="checkbox"]:checked + label::before{
+    display: none;
+}

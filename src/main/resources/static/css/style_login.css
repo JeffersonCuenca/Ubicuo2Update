@@ -1,0 +1,107 @@
+body{
+	margin: 0;
+	padding: 0;
+	background: url(../images/fondo_login.jpg) no-repeat center top;
+	background-size: cover;
+	font-family: sans-serif;
+	height: 100hv;
+}
+
+.login-box{
+	border-radius: 5px;
+	width: 320px;
+	height: 400px;
+	background: #ffffff;
+	color: #000000;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	padding: 50px 30px;
+}
+
+.login-box h1{
+	margin: 0;
+	padding: 0 0 20px;
+	text-align: center;
+	font-size: 22ppx;
+}
+
+.login-box label{
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	display: block;
+}
+
+.login-box input{
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.login-box input[type="text"],.login-box input[type="password"]{
+	border: none;
+	border-bottom: 1px solid #000;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: #000;
+	font-size: 14px;
+}
+
+.login-box input[type="submit"]{
+	border: none;
+	outline: none;
+	height: 40px;
+	background: #b00024;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 30px;
+}
+
+.login-box a{
+	text-decoration: none;
+	font-size: 12px;
+	line-height: 20px;
+	color: #000;
+}
+
+.login-box a:hover{
+	color: #b00024;
+}
+
+.wrap{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/*min-height: 50vh;*/
+}
+
+.item{
+	padding: 10px;
+}
+
+.btn{
+	outline: none;
+	display: block;
+	border: none;
+	font-size: 14px;
+	line-height: 1;
+	padding: 10px 25px;
+	border-radius: 5px;
+	background: #b00024;
+	color: #fff;
+	cursor: pointer;
+}
+
+.btn:hover,.btn:focus{
+	background: #fff;
+	color: #b00024;
+	border: solid 1px #b00024;
+}
+
+.btn:active{
+	background: #b00024;
+	color: #fff;
+}
